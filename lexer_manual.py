@@ -162,7 +162,6 @@ class Scanner:
   # função principal: percorre todo o código e gera lista de tokens
   def scan_all(self) -> List[Token]:
 
-
     while self.i < len(self.codigo):
       ch = self._peek()
 
@@ -171,8 +170,7 @@ class Scanner:
         self._advance()
         continue
 
-
-      # ignora comentários de linha (// ... até fim da linha)
+      # ignora comentários de linha (// ...)
       if ch == '/' and self._peek2() == '//':
         self._advance()  # /
         self._advance()  # /
@@ -188,7 +186,7 @@ class Scanner:
         self._advance()  # *
         while True:
           if self._peek() == '\0':
-            break  # erro: comentário não fechado, mas apenas ignora
+            break  # erro: não fechado
           if self._peek() == '*' and self.codigo[self.i+1:self.i+2] == '/':
             self._advance()  # *
             self._advance()  # /
@@ -205,7 +203,6 @@ class Scanner:
         if self._peek() == '\n':
           self._advance()
         continue
-
 
       # Literais de string
       if ch == '"':
@@ -255,8 +252,6 @@ class Scanner:
           self.tokens.append(Token(TokenType.ERRO, lex))
         continue
 
-
-
       # Identificadores e palavras-chave
       if self._is_ident_start(ch):
         lex = self._advance()
@@ -267,7 +262,6 @@ class Scanner:
         else:
           self._emit_id(lex)
         continue
-
 
       # Números
       if ch.isdigit() or (ch == '.' and self._peek( ) and self._peek() != '\0' and self._peek().isdigit()):
@@ -288,7 +282,6 @@ class Scanner:
             is_float = True
             while self._peek().isdigit():
               lex += self._advance()
-        # Erro: vírgula como separador decimal
         if self._peek() == ",":
           lex += self._advance()
           while self._peek().isdigit():
