@@ -83,7 +83,7 @@ def test_codigo2():
     assert tipo_counts[TokenType.PP_DIRECTIVE] == 1
     assert tipo_counts[TokenType.KEYWORD] == 3  # int, return, void
     assert tipo_counts[TokenType.ID] == 2       # main, printf
-    assert tipo_counts[TokenType.STRING] == 1
+    assert tipo_counts[TokenType.STRING] == 1   # "Hello, world!\n"
     assert tipo_counts[TokenType.NUM] == 1      # 0
     assert tipo_counts[TokenType.EOF] == 1
 
