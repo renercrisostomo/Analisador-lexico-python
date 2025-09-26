@@ -204,45 +204,8 @@ if __name__ == "__main__":
   }
   int 8a
   """
-  codigo2 = """
-  #include <stdio.h>
-
-  int main(void) {
-    printf("Hello, world!\n");
-    return 0;
-  }
-  """
-  codigo3 = """
-  int main(void) {
-    int x = 42;
-    float y = 3.14;
-    char c = 'a';
-
-    x = x + 10;
-    y = y * 2;
-    c = '\n';
-
-    return x;
-  }
-  """
-  codigo4 = """
-  int main(void) {
-    int i = 0;
-
-    while (i < 5) {
-        if (i % 2 == 0) {
-          printf("even\n");
-        } else {
-          printf("odd\n");
-        }
-        i++;
-    }
-
-    return 0;
-  }
-  """
   
-  sc = Scanner(codigo2)
+  sc = Scanner(codigo)
   sc.scan_all()
   sc.print_tokens()
   sc.print_symbol_table(sort_by_name=False)
